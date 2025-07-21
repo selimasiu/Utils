@@ -1,0 +1,52 @@
+#pln volcanno
+markers_pln_gdt <- FindMarkers(Guy, ident.1 = "pLN_GdT")
+markers_pln_gdt <- sc_annotate_de(markers_pln_gdt)
+sc_volcano_plotly(markers_pln_gdt, "marker pln")
+sc_volcano(markers_pln_gdt)+ theme_classic()
+write.csv(markers_pln_gdt , "markers_plN.csv")
+library(EnhancedVolcano)
+
+
+tiff(filename = "marker_pln.tiff", width = 10, height = 20 , units = "in", res = 300)
+EnhancedVolcano(markers_pln_gdt,
+                lab = rownames(markers_pln_gdt),
+                x = 'avg_log2FC',
+                y = 'p_val_adj')
+
+dev.off()
+
+#skin volcano
+markers_skin_gdt <- FindMarkers(Guy, ident.1 = "Skin_GdT")
+markers_pln_gdt <- sc_annotate_de(markers_skin_gdt)
+sc_volcano_plotly(markers_skin_gdt, "marker Skin")
+sc_volcano(markers_skin_gdt)+ theme_classic()
+write.csv(markers_skin_gdt , "markers_skin.csv")
+library(EnhancedVolcano)
+
+
+tiff(filename = "marker_skin.tiff", width = 10, height = 20 , units = "in", res = 300)
+EnhancedVolcano(markers_pln_gdt,
+                lab = rownames(markers_skin_gdt),
+                x = 'avg_log2FC',
+                y = 'p_val_adj')
+
+dev.off()
+
+
+#thymus volcano
+markers_thymus_gdt <- FindMarkers(Guy, ident.1 = "Thymus_GdT")
+markers_pln_gdt <- sc_annotate_de(markers_thymus_gdt)
+sc_volcano_plotly(markers_thymus_gdt, "marker Thymus")
+sc_volcano(markers_thymus_gdt)+ theme_classic()
+write.csv(markers_thymus_gdt , "markers_thymus.csv")
+library(EnhancedVolcano)
+
+
+tiff(filename = "marker_thymus.tiff", width = 10, height = 20 , units = "in", res = 300)
+EnhancedVolcano(markers_pln_gdt,
+                lab = rownames(markers_thymus_gdt),
+                x = 'avg_log2FC',
+                y = 'p_val_adj')
+
+dev.off()
+
